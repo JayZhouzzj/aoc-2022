@@ -3,15 +3,17 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
 int main(int argc, char** argv) {
   std::ifstream f("input.in");
   std::string line;
   int max = 0;
   int curr = 0;
+  std::vector<int> elfs;
   while (std::getline(f, line)) {
     if (line.length() == 0) {
-      max = std::max(max, curr);
+      elfs.push_back(curr);
       curr = 0;
     }
 
@@ -19,7 +21,9 @@ int main(int argc, char** argv) {
     int energy;
     while (iss >> energy) { curr += energy; }
   }
-  max = std::max(max, curr);
+  elfs.push_back(curr);
+  std::sort(elfs.rbegin(), elfs.rend());
 
-  std::cout << max << std::endl;
+  std::cout << elfs[0] << " " << elfs[1] << " " << elfs[2] << std::endl;
+  std::cout << elfs[0] + elfs[1] + elfs[2] << std::endl;
 }
