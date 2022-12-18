@@ -17,8 +17,8 @@ int main(int argc, char** argv) {
   std::getline(f, line);
   std::unordered_map<char, int> m;
   for (int i = 0; i < line.length(); ++i) {
-    if (i - 4 >= 0 && (--m[line.at(i - 4)]) == 0) {
-      m.erase(line.at(i - 4));
+    if (i - 14 >= 0 && (--m[line.at(i - 14)]) == 0) {
+      m.erase(line.at(i - 14));
     }
     ++m[line.at(i)];
 
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     }
     std::cout << std::endl;
 
-    if (m.size() == 4) {
+    if (m.size() == 14) {
       std::cout << i + 1 << std::endl;
       return 0;
     }
