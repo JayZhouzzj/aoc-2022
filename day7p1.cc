@@ -16,7 +16,6 @@ class Node {
   std::string name;
   int size;
   Node(std::string name): name{name} {}
-  Node(Node* parent, std::string name): parent{parent}, name{name} {}
   Node(Node* parent, std::string name, int size): 
       parent{parent}, name{name}, size{size} {}
 };
@@ -69,7 +68,7 @@ int main(int argc, char** argv) {
         if (line.at(0) == '$') { shouldContinue = true; break; }
         if (line.substr(0, 3) == "dir") {
           std::cout << "dir: " << line.substr(line.find(" ") + 1) << std::endl;
-          curr->children.emplace_back(curr, line.substr(line.find(" ") + 1));
+          curr->children.emplace_back(curr, line.substr(line.find(" ") + 1), 0);
         } else {
           int size = std::stoi(line.substr(0, line.find(" ")));
           std::string fileName = line.substr(line.find(" ") + 1);
