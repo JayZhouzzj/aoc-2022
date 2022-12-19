@@ -61,12 +61,14 @@ int main(int argc, char** argv) {
           }
         }
       }
+      if (!std::getline(f, line)) { break; }
     } else {
       // ls
       bool shouldContinue = false;
       while (std::getline(f, line)) {
-        if (line.at(0) == '$') { shouldContinue = true; }
+        if (line.at(0) == '$') { shouldContinue = true; break; }
         if (line.substr(0, 3) == "dir") {
+          std::cout << "dir: " << line.substr(line.find(" ") + 1) << std::endl;
           curr->children.emplace_back(curr, line.substr(line.find(" ") + 1));
         } else {
           int size = std::stoi(line.substr(0, line.find(" ")));
