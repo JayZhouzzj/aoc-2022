@@ -25,6 +25,11 @@ int main(int argc, char** argv) {
     }
     grid.push_back(std::move(curr));
   }
+  for (const auto& v : grid) {
+    for (int val : v) { std::cout << val; }
+    std::cout << std::endl;
+  }
+
   std::vector<std::vector<int>> counts(n, std::vector<int>(n));
   for (int i = 0; i < n; ++i) {
     int max = -1;
@@ -55,7 +60,7 @@ int main(int argc, char** argv) {
   }
   for (int j = 0; j < n; ++j) {
     int max = -1;
-    for (int i = n; i >= 0; --i) {
+    for (int i = n - 1; i >= 0; --i) {
       if (grid[i][j] > max) { 
         counts[i][j] = 1; 
         max = grid[i][j];
@@ -64,7 +69,7 @@ int main(int argc, char** argv) {
   }
 
   int result = 0;
-  for (const auto& v : grid) {
+  for (const auto& v : counts) {
     for (int count : v) { result += count; }
   }
   std::cout << result << std::endl;
