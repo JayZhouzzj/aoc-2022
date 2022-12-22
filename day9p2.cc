@@ -37,18 +37,17 @@ void move(std::pair<int, int>& h, std::pair<int, int>& t,
   } else if (std::abs(h.first - t.first) == 1 && 
         std::abs(h.second - t.second) == 1) {
     // do nothing
-  } else if (h.first - t.first == 2) {
-    t.second = h.second;
-    t.first += 1;
-  } else if (h.first - t.first == -2) {
-    t.second = h.second;
-    t.first -= 1;
-  } else if (h.second - t.second == 2) {
-    t.first = h.first;
-    t.second += 1;
-  } else if (h.second - t.second == -2) {
-    t.first = h.first;
-    t.second -= 1;
+  } else {
+    if (h.first > t.first) {
+      ++t.first;
+    } else {
+      --t.first;
+    }
+    if (h.second > t.second) {
+      ++t.second;
+    } else {
+      --t.second;
+    }
   }
 
   if (track) {
