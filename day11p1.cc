@@ -42,6 +42,7 @@ public:
 
 int main(int argc, char** argv) {
   std::vector<Monkey> monkeys{
+    {{71, 56, 50, 73}, 13, 1, 7, [](int& worry){ worry *= 11; }},
     {{70, 89, 82}, 7, 3, 6, [](int& worry){ worry += 1; }},
     {{52, 95}, 3, 5, 4, [](int& worry){ worry *= worry; }},
     {{94, 64, 69, 87, 70}, 19, 2, 6, [](int& worry){ worry += 2; }},
